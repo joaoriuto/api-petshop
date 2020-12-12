@@ -16,9 +16,10 @@ module.exports = {
 
         if (!encontrado) {
             throw new Error('Fornecedor não encontrado na base de dados.')
+        } else {
+            return encontrado
         }
 
-        return encontrado
     },
 
     async atualizar (id, dadosParaAtualizar) {
@@ -28,5 +29,10 @@ module.exports = {
                 where: { id: id }
             }
         )
+    },
+    remover(id) {
+        return Modelo.destroy({
+            where: { id: id }
+        })
     }
 }
